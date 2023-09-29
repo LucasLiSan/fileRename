@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+            <link rel="stylesheet" href="style.css">
+            <title>Renomear e Salvar Arquivos</title>
+        </head>
+        <body>
+            <div class="content">
+                <h1>RENOMEADOR DE ARQUIVOS</h1>
+                <div class="content-item">
+                    <label for="RM">RM DO ALUNO</label>
+                    <input type="text">
+                </div>
+                <div class="content-item">
+                    <label for="fileInput1">FichaMatricula.Frente</label>
+                    <input type="file" id="fileInput1" multiple><br>
+                </div>
+                <div class="content-item">
+                    <label for="fileInput2">FichaMatricula.Verso</label>
+                    <input type="file" id="fileInput2" multiple><br>
+                </div>
+                <button onclick="renameAndSaveFiles()">Renomear e Salvar Arquivos</button>
+            </div>
+            <script src="rename.js"></script>
+        </body>
+    </html>

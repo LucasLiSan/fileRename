@@ -1,0 +1,35 @@
+body {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 50%;
+}
+
+.content-item {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0 20px 0;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+}
+
+label {
+    width: 100%;
+    background-color: bisque;
+    text-align: center;
+}
+
+input {
+    width: 10%;
+    margin: 10px 0 0 0;
+}
