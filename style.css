@@ -20,7 +20,6 @@ body {
     margin: 20px 0 20px 0;
     flex-direction: column;
     align-items: center;
-    width: 60%;
 }
 
 label {
@@ -30,6 +29,5 @@ label {
 }
 
 input {
-    width: 10%;
     margin: 10px 0 0 0;
 }
