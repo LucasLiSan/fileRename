@@ -11,17 +11,22 @@
             <div class="content">
                 <h1>RENOMEADOR DE ARQUIVOS</h1>
                 <div class="content-item">
-                    <label for="RM">RM DO ALUNO</label>
-                    <input type="text" id="rmInput" required>
+                    <input type="text" for="RM" class="label">
+                    <input type="text" id="denominador" required>
                 </div>
                 <div class="content-item">
-                    <label for="fileInput1">FichaMatricula.Frente</label>
+                    <input type="text" for="fileInput1" id="fileLabel1" class="label">
                     <input type="file" id="fileInput1" multiple><br>
                 </div>
                 <div class="content-item">
-                    <label for="fileInput2">FichaMatricula.Verso</label>
+                    <input type="text" for="fileInput2" id="fileLabel2" class="label">
                     <input type="file" id="fileInput2" multiple><br>
                 </div>
+                <div class="content-item gerador">
+                    <input type="number" name="qtdMais" id="qtdM" min="1" max="20">
+                    <input type="button" value="CRIAR" onclick="newOpts()" id="btnCreate">
+                </div>
+                <div class="content-item content-more" id="displayData"></div>
                 <button onclick="renameAndSaveFiles()">Renomear e Salvar Arquivos</button>
             </div>
             <script src="script.js"></script>

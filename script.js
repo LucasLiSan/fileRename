@@ -1,22 +1,40 @@
-function renameAndSaveFiles() {
-    // Pega o valor do input "RM"
-    const rmValue = document.getElementById('rmInput').value;
+const fileInputs = [];
+const fileLabels = [];
 
-    // Pega os inputs de arquivo
-    const fileInput1 = document.getElementById('fileInput1');
-    const fileInput2 = document.getElementById('fileInput2');
+function newOpts (){
+    var nInputs = document.getElementById("qtdM").value;
+    const display = document.getElementById("displayData");
+    
+    let inpt = "";
+    let inptContador = 3;
+    while (nInputs > 0) {
+        inpt += '<input type="text" for="fileInput${inptContador}" id="fileLabel${inptContador}" class="label"> <input type="file" id="fileInput${inptContador}" multiple><br>';
 
-    // Renomeia e salva os arquivos
-    renameAndSave(fileInput1, 'FichaMatricula.Frente', rmValue);
-    renameAndSave(fileInput2, 'FichaMatricula.Verso', rmValue);
+        fileInputs.push(document.getElementById(`fileInput${inptContador}`));
+        fileLabels.push(document.getElementById(`fileLabel${inptContador}`)).value;
+
+        inptContador ++;
+        nInputs --;
+    }
+    display.innerHTML = inpt;
+
 }
 
-function renameAndSave(inputElement, label, rmValue) {
+function renameAndSaveFiles() {
+    // Pega o valor do input "RM"
+    const denoValue = document.getElementById('denominador').value;
+
+    for (let i = 0; i < fileInputs.length; i++) {
+        renameAndSave(fileInputs[i], fileLabels[i], denoValue);
+    }
+}
+
+function renameAndSave(inputElement, label, denoValue) {
     const files = inputElement.files;
 
     for (let i = 0; i < files.length; i++) {
         const file = files[i];
-        const newName = `${rmValue}.${label}.${i + 1}.${file.name.split('.').pop()}`;
+        const newName = `${denoValue}.${label}.${i + 1}.${file.name.split('.').pop()}`;
         const blob = new Blob([file], { type: file.type });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -29,3 +47,10 @@ function renameAndSave(inputElement, label, rmValue) {
         document.body.removeChild(a);
     }
 }
+
+
+
+    //<div class="content-item">
+    //    <input type="text" for="fileInput2" class="label">
+    //    <input type="file" id="fileInput2" multiple><br>
+    //</div>
