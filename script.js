@@ -1,31 +1,33 @@
-const fileInputs = [];
-const fileLabels = [];
+let fileInputs = [];
+let fileLabels = [];
 
-function newOpts (){
-    var nInputs = document.getElementById("qtdM").value;
+function newOpts() {
+    const nInputs = parseInt(document.getElementById("qtdM").value, 10);
     const display = document.getElementById("displayData");
-    
+
     let inpt = "";
-    let inptContador = 3;
-    while (nInputs > 0) {
-        inpt += '<input type="text" for="fileInput${inptContador}" id="fileLabel${inptContador}" class="label"> <input type="file" id="fileInput${inptContador}" multiple><br>';
 
-        fileInputs.push(document.getElementById(`fileInput${inptContador}`));
-        fileLabels.push(document.getElementById(`fileLabel${inptContador}`)).value;
-
-        inptContador ++;
-        nInputs --;
+    for (let i = 1; i <= nInputs; i++) {
+        inpt += `<input type="text" id="fileLabel${i}" class="label"> <input type="file" id="fileInput${i}" multiple><br>`;
     }
-    display.innerHTML = inpt;
 
+    fileInputs = [];
+    fileLabels = [];
+
+    display.innerHTML = inpt;
 }
 
 function renameAndSaveFiles() {
-    // Pega o valor do input "RM"
     const denoValue = document.getElementById('denominador').value;
 
-    for (let i = 0; i < fileInputs.length; i++) {
-        renameAndSave(fileInputs[i], fileLabels[i], denoValue);
+    for (let i = 1; i <= fileInputs.length; i++) {
+        const inputElement = document.getElementById(`fileInput${i}`);
+        const labelElement = document.getElementById(`fileLabel${i}`);
+
+        if (inputElement.files.length > 0) {
+            const label = labelElement.value;
+            renameAndSave(inputElement, label, denoValue);
+        }
     }
 }
 
@@ -45,12 +47,6 @@ function renameAndSave(inputElement, label, denoValue) {
         a.click();
         URL.revokeObjectURL(url);
         document.body.removeChild(a);
+        console.log(newName);
     }
 }
-
-
-
-    //<div class="content-item">
-    //    <input type="text" for="fileInput2" class="label">
-    //    <input type="file" id="fileInput2" multiple><br>
-    //</div>
