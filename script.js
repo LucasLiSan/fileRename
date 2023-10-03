@@ -1,52 +1,43 @@
-let fileInputs = [];
-let fileLabels = [];
+let inputCount = 0;
 
-function newOpts() {
-    const nInputs = parseInt(document.getElementById("qtdM").value, 10);
-    const display = document.getElementById("displayData");
-
-    let inpt = "";
-
-    for (let i = 1; i <= nInputs; i++) {
-        inpt += `<input type="text" id="fileLabel${i}" class="label"> <input type="file" id="fileInput${i}" multiple><br>`;
-    }
-
-    fileInputs = [];
-    fileLabels = [];
-
-    display.innerHTML = inpt;
-}
-
-function renameAndSaveFiles() {
-    const denoValue = document.getElementById('denominador').value;
-
-    for (let i = 1; i <= fileInputs.length; i++) {
-        const inputElement = document.getElementById(`fileInput${i}`);
-        const labelElement = document.getElementById(`fileLabel${i}`);
-
-        if (inputElement.files.length > 0) {
-            const label = labelElement.value;
-            renameAndSave(inputElement, label, denoValue);
+        function addFileInput() {
+            inputCount++;
+            const dynamicInputs = document.getElementById('dynamicInputs');
+            const newInput = document.createElement('div');
+            newInput.innerHTML = `<label for="fileInput${inputCount}">Nome do Arquivo ${inputCount}:</label>
+                                  <input class="nomes" type="text" id="fileNameInput${inputCount}" placeholder="Digite o nome do arquivo">
+                                  <input type="file" id="fileInput${inputCount}" multiple><br>`;
+            dynamicInputs.appendChild(newInput);
         }
-    }
-}
 
-function renameAndSave(inputElement, label, denoValue) {
-    const files = inputElement.files;
+        function renameAndSaveFiles() {
+            // Pega o valor do input "RM"
+            const rmValue = document.getElementById('rmInput').value;
 
-    for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        const newName = `${denoValue}.${label}.${i + 1}.${file.name.split('.').pop()}`;
-        const blob = new Blob([file], { type: file.type });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = newName;
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        URL.revokeObjectURL(url);
-        document.body.removeChild(a);
-        console.log(newName);
-    }
-}
+            for (let i = 1; i <= inputCount; i++) {
+                const fileNameInput = document.getElementById(`fileNameInput${i}`);
+                const inputElement = document.getElementById(`fileInput${i}`);
+                const fileName = fileNameInput.value || `Arquivo${i}`; // Use o valor do campo de entrada ou um nome padrão
+
+                renameAndSave(inputElement, fileName, rmValue);
+            }
+        }
+
+        function renameAndSave(inputElement, fileName, rmValue) {
+            const files = inputElement.files;
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const newName = `${rmValue}.${fileName}.${i + 1}.${file.name.split('.').pop()}`;
+                const blob = new Blob([file], { type: file.type });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = newName;
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            }
+        }
