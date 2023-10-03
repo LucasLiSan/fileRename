@@ -8,15 +8,15 @@
             <title>Renomear e Salvar Arquivos</title>
         </head>
         <body>
+            <h1>RENOMEADOR DE ARQUIVOS</h1>
             <div class="content">
-                <h1>RENOMEADOR DE ARQUIVOS</h1>
                 <div class="content-item">
                     <label for="rmInput">RM DO ALUNO</label>
                     <input type="text" id="rmInput" required>
                 </div>
                 <div class="content-item" id="dynamicInputs"></div>
-                <button onclick="addFileInput()">Adicionar Arquivo</button>
-                <button onclick="renameAndSaveFiles()">Renomear e Salvar Arquivos</button>
             </div>
+            <button class="add" onclick="addFileInput()">Adicionar Arquivo</button>
+            <button class="rename" onclick="renameAndSaveFiles()">Renomear e Salvar Arquivos</button>
         </body>
     </html>

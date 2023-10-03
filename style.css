@@ -1,22 +1,36 @@
 body {
     width: 100vw;
-    display: flex;
-    justify-content: center;
-}
-
-h1 {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-.content {
+    height: 100vh;
+    background: linear-gradient(180deg, rgba(110,11,34,1) 0%, rgba(199,40,77,1) 43%, rgba(19,142,186,1) 100%);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    align-content: center;
-    flex-wrap: wrap;
+}
+
+h1 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #ffffff;
+    position: relative;
+}
+
+.content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
     width: 50%;
-    
+    height: 70%;
+    background: rgba(255, 255, 255, 0.17);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.2px);
+    -webkit-backdrop-filter: blur(4.2px);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    overflow: auto;
 }
 
 label {
@@ -24,7 +38,7 @@ label {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-transform: uppercase;
     background-color: #FF4D76;
-    width: 100%;
+    width: 95%;
     text-align: center;
     height: 35px;
     align-items: center;
@@ -39,13 +53,26 @@ label {
     margin: 0 0 20px 0;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 50%;
     justify-content: center;
     align-content: center;
+    position: absolute;
+    top: 40px;
+}
+
+#dynamicInputs {
+    position: absolute;
+    top: 150px;
+}
+
+div {
+    position: relative;
+    top: 0;
+    width: 100%;
 }
 
 .nomes {
-    width: 100%;
+    width: 95%;
     height: 35px;
     background-color: #BB2649;
     color: #ffffff;
@@ -64,6 +91,33 @@ label {
 
 input {
     margin: 10px 0 0 0;
+}
+
+#rmInput {
+    text-align: center;
+    font-weight: bolder;
+    height: 35px;
+    font-size: 20px;
+    width: 150px;
+}
+
+#rmInput:focus {
+    background-color: #f3f377;
+}
+
+.add {
+    background-color: #ffff00;
+    color: #000000;
+}
+
+.add:hover {
+    background-color: #008000;
+    color: #ffffff;
+}
+
+.add:active {
+    background-color: #6262d3;
+    color: #ffffff;
 }
 
 button {
