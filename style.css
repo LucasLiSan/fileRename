@@ -137,3 +137,9 @@ button:active {
     background-color: #008000;
     color: #000000;
 }
+
+@media (max-width: 680px), screen and (orientation: portrait) {
+    .content {
+        width: 90%;
+    }
+}
