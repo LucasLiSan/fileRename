@@ -11,24 +11,24 @@ let inputCount = 0;
         }
 
         function renameAndSaveFiles() {
-            // Pega o valor do input "RM"
-            const rmValue = document.getElementById('rmInput').value;
+            // Pega o valor do input "identificador"
+            const identValue = document.getElementById('identificador').value;
 
             for (let i = 1; i <= inputCount; i++) {
                 const fileNameInput = document.getElementById(`fileNameInput${i}`);
                 const inputElement = document.getElementById(`fileInput${i}`);
                 const fileName = fileNameInput.value || `Arquivo${i}`; // Use o valor do campo de entrada ou um nome padrão
 
-                renameAndSave(inputElement, fileName, rmValue);
+                renameAndSave(inputElement, fileName, identValue);
             }
         }
 
-        function renameAndSave(inputElement, fileName, rmValue) {
+        function renameAndSave(inputElement, fileName, identValue) {
             const files = inputElement.files;
 
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];
-                const newName = `${rmValue}.${fileName}.${i + 1}.${file.name.split('.').pop()}`;
+                const newName = `${identValue}.${fileName}.${i + 1}.${file.name.split('.').pop()}`;
                 const blob = new Blob([file], { type: file.type });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');

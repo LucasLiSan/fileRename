@@ -93,7 +93,7 @@ input {
     margin: 10px 0 0 0;
 }
 
-#rmInput {
+#identificador {
     text-align: center;
     font-weight: bolder;
     height: 35px;
@@ -101,7 +101,7 @@ input {
     width: 150px;
 }
 
-#rmInput:focus {
+#identificador:focus {
     background-color: #f3f377;
 }
 
